@@ -1,15 +1,34 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        do {
+            System.out.println("\n--- MENU ---");
+            System.out.println("1. Add message");
+            System.out.println("2. Print all messages");
+            System.out.println("3. Delete message");
+            System.out.println("4. Search message by word");
+            System.out.println("5. Print all digital messages");
+            System.out.println("6. Exit");
+            System.out.print("Enter");
+            choice = scanner.nextInt();
+            scanner.nextLine();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
-    }
+            switch (choice) {
+                case 1:
+                    addMessage(scanner);
+                    break;
+                    case 2:
+                        printAllMessages();
+                        break; case 3: deleteMessage(scanner);
+                        break; case 4: searchMessages(scanner);
+                        break; case 5: printDigitalMessages();
+                        break; case 6: System.out.println("EXIT");
+                        break; default: System.out.println("Enter again");
+            }
+        } while (choice != 6);
+        scanner.close();
+   }
 }
