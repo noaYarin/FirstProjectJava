@@ -1,31 +1,25 @@
 import java.util.Date;
 import java.util.ArrayList;
 
-public abstract class EmailMessage extends Message implements IDigital{
-    private String subject="";
+public class EmailMessage extends Message implements IDigital{
+    private String priority="";
+    enum priority {
+        URGENT,
+        REGULAR,
+        GENERAL
+    }
     private ArrayList<File> attachments;
 
-    public EmailMessage(String _senderName,String _content, Date _sendDate,String subject) {
+    public EmailMessage(String _senderName,String _content, Date _sendDate,String _priority) {
         super(_senderName,_content,_sendDate);
-        this.subject=subject;
+        this.priority=_priority;
         this.attachments = new ArrayList<File>();
     }
 
-    public EmailMessage(String _senderName,String _content,String subject) {
+    public EmailMessage(String _senderName,String _content,String _priority) {
         super(_senderName, _content);
-        this.subject = subject;
         this.attachments = new ArrayList<File>();
-    }
-
-    public void setSubject(String _subject) {
-        if(subject == null || subject.isEmpty()){
-            throw new IllegalArgumentException ("Empty or null subject");
-        }
-        subject = _subject;
-    }
-
-    public String getSubject(String subject) {
-        return subject;
+        this.priority=_priority;
     }
 
     public void addAttachment(File file){
@@ -40,8 +34,13 @@ public abstract class EmailMessage extends Message implements IDigital{
     }
 
     @Override
+    public String getMessageType() {
+        return "Its an Email Message";
+    }
+
+    @Override
     public String toString() {
         super.toString();
-        return "Subject:" + subject + "\n";
+        return "Subject:" + priority + "\n";
     }
 }

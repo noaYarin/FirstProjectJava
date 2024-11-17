@@ -1,28 +1,41 @@
 import java.util.Date;
 
-public abstract class BoardMessage extends Message {
-    private String priority="";
-    private boolean isActive=false;
+public class BoardMessage extends Message {
+    private String subject="";
+    private boolean isNew=false;
 
-    enum priority {
-        URGENT,
-        REGULAR
-    }
-    public BoardMessage(String _senderName,String _content, Date _sendDate,boolean _isActive,String _priority) {
+    public BoardMessage(String _senderName,String _content, Date _sendDate,boolean _isNew,String _subject) {
         super(_senderName,_content,_sendDate);
-        this.isActive=_isActive;
-        this.priority=_priority;
+        this.isNew=_isNew;
+        this.subject=_subject;
     }
 
-    public BoardMessage(String _senderName,String _content,boolean _isActive,String _priority) {
+    public BoardMessage(String _senderName,String _content,boolean _isNew,String _subject) {
         super(_senderName,_content);
-        this.isActive=_isActive;
-        this.priority=_priority;
+        this.isNew=_isNew;
+        this.subject=_subject;
     }
+
+    public String getSubject(String subject) {
+        return subject;
+    }
+
+    public void setSubject(String _subject) {
+        if(subject == null || subject.isEmpty()){
+            throw new IllegalArgumentException ("Empty or null subject");
+        }
+        subject = _subject;
+    }
+
+    @Override
+    public String getMessageType() {
+        return "Its an Board Message";
+    }
+
 
     @Override
     public String toString() {
         super.toString();
-        return "Active:" + (isActive ?"Yes" : "No")+ "\n";
+        return "New Board Message:" + (isNew ?"Yes" : "No")+ "\n";
     }
 }

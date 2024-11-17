@@ -1,5 +1,5 @@
 import java.util.Date;
-public abstract class WhatsApp extends Message{
+public class WhatsApp extends Message{
 
     private String recipient="";
     private boolean isSeen=false;
@@ -22,6 +22,11 @@ public abstract class WhatsApp extends Message{
 
     private boolean getIsSeen(){
         return isSeen;
+    }
+
+    @Override
+    public String getMessageType() {
+        return "Its an WhatsApp Message";
     }
 
     @Override
