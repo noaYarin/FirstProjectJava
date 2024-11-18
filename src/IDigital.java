@@ -1,3 +1,3 @@
 public interface IDigital {
-    private void printCommunicationMethod(){}
+     public void printCommunicationMethod();
 }

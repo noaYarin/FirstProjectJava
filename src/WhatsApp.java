@@ -1,5 +1,5 @@
 import java.util.Date;
-public class WhatsApp extends Message{
+public class WhatsApp extends Message implements IDigital{
 
     private String recipient="";
     private boolean isSeen=false;
@@ -26,12 +26,17 @@ public class WhatsApp extends Message{
 
     @Override
     public String getMessageType() {
-        return "Its an WhatsApp Message";
+        return "WhatsApp";
     }
 
     @Override
-    public String toString() {
-        return "Recipient:" + recipient + "\n" +
-                "Seen:" + (isSeen ?"Yes" : "No")+ "\n";
+    public void ToString() {
+        super.ToString();
+        System.out.println( "Recipient:" + recipient + "\n" +
+                "Seen:" + (isSeen ?"Yes" : "No")+ "\n");
+    }
+
+    @Override public void printCommunicationMethod(){
+        System.out.println("Protocol - SMS");
     }
 }

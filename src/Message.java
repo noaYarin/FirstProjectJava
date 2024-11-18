@@ -6,6 +6,9 @@ public abstract class Message {
     private String sender="";
     private String content="";
     private Date sendDate;
+    private String type="";
+
+    protected Message(){}
 
     public Message(String _senderName,String _content, Date _sendDate){
         setSender(_senderName);
@@ -65,10 +68,9 @@ public abstract class Message {
 
     public abstract String getMessageType();
 
-    @Override
-    public String toString() {
-        return "Sender:" + sender + "\n" +
+    public void ToString() {
+        System.out.println("Sender:" + sender + "\n" +
                 "Content:" + content + "\n" +
-                "Date Sent:" + sendDate + "\n";
+                "Date Sent:" + sendDate);
     }
 }

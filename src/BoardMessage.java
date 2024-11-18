@@ -29,13 +29,12 @@ public class BoardMessage extends Message {
 
     @Override
     public String getMessageType() {
-        return "Its an Board Message";
+        return "Board Message";
     }
 
-
     @Override
-    public String toString() {
-        super.toString();
-        return "New Board Message:" + (isNew ?"Yes" : "No")+ "\n";
+    public void ToString() {
+        super.ToString();
+        System.out.println("New Board Message:" + (isNew ?"Yes" : "No")+ "\n" +"Subject: "+ subject+"\n");
     }
 }
